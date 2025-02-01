@@ -16,6 +16,8 @@
       height: 100vh;
       background-color: lightblue;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
     nav {
       display: flex;
@@ -28,6 +30,8 @@
     ul {
       display: flex;
       align-items: center;
+      width: 100%;
+      justify-content: flex-end;
     }
     li {
       list-style: none;
@@ -44,7 +48,7 @@
       border-radius: 2px;
       color: white;
     }
-    .button-cv, .button-gfc {
+    .button-cv {
       display: inline-block;
       border-radius: 5px;
       transition: background-color 0.5s;
@@ -60,103 +64,43 @@
       background-color: white;
       color: black;
     }
-    .button-gfc {
-      background: lightsalmon;
-    }
-    .button-gfc:hover {
-      background-color: white;
-      color: black;
-    }
     .body {
-      margin-left: 100px;
-      margin-top: 100px;
+      margin: auto;
+      width: 80%;
+      text-align: center;
+      padding-top: 50px;
     }
-    h1 {
-      font-size: 30px;
-      color: black;
+    .body img {
+      width: 200px;
+      border-radius: 50%;
       margin-bottom: 20px;
     }
-    .demo1 {
-      color: orange;
-      margin-bottom: 30px;
-    }
-    .demo2 {
-      line-height: 20px;
-    }
-    .button-lrn, .button-hire {
-      background: lightsalmon;
-      padding: 10px 12px;
-      text-decoration: none;
-      font-weight: bold;
-      color: whitesmoke;
-      display: inline-block;
-      margin: 30px 8px;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-      border: none;
-      letter-spacing: 1px;
-      cursor: pointer;
-    }
-    .button-lrn:hover {
-      background-color: whitesmoke;
+    .body p {
+      font-size: 18px;
+      line-height: 1.6;
       color: black;
-    }
-    .button-hire {
-      background: black;
-    }
-    .button-hire:hover {
-      background-color: seagreen;
-    }
-    .green {
-      color: seagreen;
-    }
-    .image {
-      max-width: fit-content;
-      height: 70%;
-      position: absolute;
-      bottom: 25%;
-      right: 25%;
-    }
-    .icon {
-      height: 120%;
-      position: absolute;
-      left: 50%;
-      transform: translate(-60%);
-      clip-path: circle(26%);
     }
   </style>
 </head>
 <body>
   <div class="header">
     <nav>
-      <a href="index.html"><img src="/images/logo.png?v2" alt="logo"></a>
       <ul>
         <li><a href="index.html">HOME</a></li>
         <li><a href="about.html">ABOUT ME</a></li>
         <li><a href="projects.html">PROJECTS</a></li>
         <li><a href="contact.html">CONTACT ME</a></li>
         <li>
-          <button type="button" class="button-gfc">Get Free Consultant</button>
-        </li>
-        <li>
           <button type="button" class="button-cv">DOWNLOAD CV</button>
         </li>
       </ul>
     </nav>
     <div class="body">
-      <p class="demo1">GET EVERY SINGLE SOLUTION.</p>
-      <h1>
-        Hello <br> I'm <span class="green">Tutorials</span> <span>Point.</span>
-      </h1>
-      <p class="demo2">
-        From concept to deployment, I bring ideas<br>
-        to life as a versatile full stack developer...
+      <!-- Replace the image source with your actual picture -->
+      <img src="/assets/images/vg.jpg" alt="Picture of Me">
+      <p>
+        I am a tinkerer at heart. Woodworking, soldering, and even embroidery - I love working with my hands. My experience as a fabrication and embedded systems intern at Tsalla Aerospace, coupled with three years as a student worker at Haverford College’s MakerSpace, has honed my skills in fast prototyping. Whether it be rebuilding a crashed drone in time for a test flight or helping a fellow student design CAD models for their latest project, I’ve learned to approach challenges with a mindset rooted in a willingness to explore, fail, and iterate.
       </p>
-      <button type="button" class="button-lrn">LEARN MORE</button>
-      <button type="button" class="button-hire">HIRE ME</button>
-    </div>
-    <div class="image">
-      <img src="/assets/questions/media/1269191-1730184507.jpg" class="icon" alt="Profile Picture">
     </div>
   </div>
 </body>
