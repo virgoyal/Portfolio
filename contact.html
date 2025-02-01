@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Portfolio - Home</title>
+  <title>Personal Portfolio - Contact Me</title>
   <style>
-    /* Global Styles */
+    /* Re-use the same CSS as index.html */
     * {
       margin: 0;
       padding: 0;
@@ -13,9 +13,9 @@
     }
     .header {
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       background-color: lightblue;
-      position: relative;
+      padding-bottom: 50px;
     }
     nav {
       display: flex;
@@ -68,61 +68,58 @@
       color: black;
     }
     .body {
-      margin-left: 100px;
-      margin-top: 100px;
+      margin: 100px auto;
+      width: 80%;
+      text-align: center;
     }
     h1 {
       font-size: 30px;
       color: black;
       margin-bottom: 20px;
     }
-    .demo1 {
-      color: orange;
-      margin-bottom: 30px;
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
-    .demo2 {
-      line-height: 20px;
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
     }
-    .button-lrn, .button-hire {
-      background: lightsalmon;
+    form div {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .button-hire {
+      background: black;
       padding: 10px 12px;
       text-decoration: none;
       font-weight: bold;
       color: whitesmoke;
-      display: inline-block;
-      margin: 30px 8px;
-      border-radius: 5px;
-      transition: background-color 0.3s;
       border: none;
-      letter-spacing: 1px;
+      border-radius: 5px;
       cursor: pointer;
-    }
-    .button-lrn:hover {
-      background-color: whitesmoke;
-      color: black;
-    }
-    .button-hire {
-      background: black;
+      transition: background-color 0.3s;
     }
     .button-hire:hover {
       background-color: seagreen;
-    }
-    .green {
-      color: seagreen;
-    }
-    .image {
-      max-width: fit-content;
-      height: 70%;
-      position: absolute;
-      bottom: 25%;
-      right: 25%;
-    }
-    .icon {
-      height: 120%;
-      position: absolute;
-      left: 50%;
-      transform: translate(-60%);
-      clip-path: circle(26%);
     }
   </style>
 </head>
@@ -144,19 +141,25 @@
       </ul>
     </nav>
     <div class="body">
-      <p class="demo1">GET EVERY SINGLE SOLUTION.</p>
-      <h1>
-        Hello <br> I'm <span class="green">Tutorials</span> <span>Point.</span>
-      </h1>
-      <p class="demo2">
-        From concept to deployment, I bring ideas<br>
-        to life as a versatile full stack developer...
-      </p>
-      <button type="button" class="button-lrn">LEARN MORE</button>
-      <button type="button" class="button-hire">HIRE ME</button>
-    </div>
-    <div class="image">
-      <img src="/assets/questions/media/1269191-1730184507.jpg" class="icon" alt="Profile Picture">
+      <h1>Contact Me</h1>
+      <p>If you'd like to get in touch, please fill out the form below:</p>
+      <form action="#" method="post">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div>
+          <button type="submit" class="button-hire">Send Message</button>
+        </div>
+      </form>
     </div>
   </div>
 </body>
