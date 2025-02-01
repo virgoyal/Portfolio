@@ -1,122 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Portfolio - About Me</title>
+  <title>About Me - Vir Goyal</title>
   <style>
-    /* Re-use the same CSS as index.html */
+    /* Global Styles */
     * {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
+      box-sizing: border-box;
+      font-family: 'Georgia', serif;
     }
-    .header {
-      width: 100%;
-      min-height: 100vh;
-      background-color: lightblue;
-      padding-bottom: 50px;
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.8;
     }
-    nav {
+
+    header {
+      background-color: #ffffff;
+      padding: 20px 50px;
       display: flex;
-      margin: auto;
-      width: 90%;
-      padding: 20px;
-      align-items: center;
       justify-content: space-between;
-    }
-    ul {
-      display: flex;
       align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
-    li {
-      list-style: none;
-      margin: 10px;
+
+    header nav {
+      display: flex;
+      gap: 20px;
     }
-    a {
+
+    header a {
       text-decoration: none;
-      color: black;
-      font-weight: bolder;
-      padding: 5px;
-    }
-    a:hover {
-      background-color: seagreen;
-      border-radius: 2px;
-      color: white;
-    }
-    .button-cv, .button-gfc {
-      display: inline-block;
-      border-radius: 5px;
-      transition: background-color 0.5s;
-      background: black;
-      padding: 10px;
-      text-decoration: none;
+      color: #333;
       font-weight: bold;
-      color: white;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    header a:hover {
+      color: #0056b3;
+    }
+
+    header .button-cv, .button-gfc {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
       border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      text-transform: uppercase;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
-    .button-cv:hover {
-      background-color: white;
-      color: black;
+
+    header .button-cv:hover {
+      background-color: #0056b3;
+      color: #fff;
     }
-    .button-gfc {
-      background: lightsalmon;
-    }
-    .button-gfc:hover {
-      background-color: white;
-      color: black;
-    }
-    .body {
-      margin: 100px auto;
-      width: 80%;
+
+    .main-content {
       text-align: center;
+      padding: 100px 20px;
+      background-color: #e0f7fa;
     }
-    h1 {
-      font-size: 30px;
-      color: black;
+
+    .main-content h1 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #006064;
       margin-bottom: 20px;
     }
-    p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 20px;
+
+    .main-content p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      color: #004d40;
     }
-    .green {
-      color: seagreen;
+
+    .skills {
+      margin: 50px auto;
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .skills h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .skills ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .skills ul li {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+    }
+
+    footer p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    footer a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <nav>
-      <a href="index.html"><img src="/images/logo.png?v2" alt="logo"></a>
-      <ul>
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="about.html">ABOUT ME</a></li>
-        <li><a href="projects.html">PROJECTS</a></li>
-        <li><a href="contact.html">CONTACT ME</a></li>
-        <li>
-          <button type="button" class="button-gfc">Get Free Consultant</button>
-        </li>
-        <li>
-          <button type="button" class="button-cv">DOWNLOAD CV</button>
-        </li>
-      </ul>
-    </nav>
-    <div class="body">
-      <h1>About Me</h1>
-      <p>
-        Welcome to my About Me page! I'm a full stack developer with a passion for creating dynamic
-        and responsive websites. I have experience in various technologies and love to bring ideas to
-        life. Here you'll find information about my background, skills, and experience.
-      </p>
-      <p>
-        My journey in web development began several years ago, and since then, I have worked on numerous
-        projects that have helped me hone my craft. Whether it's building a new website or improving an
-        existing one, I bring creativity and technical expertise to every project.
-      </p>
+  <header>
+    <div class="logo">
+      <a href="index.html" style="font-size: 18px; font-weight: bold;">Vir's Portfolio</a>
     </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <button class="button-cv">Download CV</button>
+    </nav>
+  </header>
+  
+  <div class="main-content">
+    <h1>About Me</h1>
+    <p>
+      Hi, I'm Vir Goyal, a physics major at Haverford College and a master's student in Scientific Computing at the University of Pennsylvania. I’m passionate about pushing boundaries in research and engineering.
+    </p>
+    <p>
+      My work spans a diverse range of fields: I’ve researched axions as potential dark matter candidates, developed experimental setups to study stress patterns in photoelastic materials, and contributed to distributed temperature sensing in fiber optics for fire detection in naval aircraft carriers.
+    </p>
+    <p>
+      I’m also an experienced tinkerer and fabricator, having interned at Tsalla Aerospace, where I helped build and tune high-altitude drones. At Haverford’s Maker Arts Space, I’ve trained students in 3D printing, soldering, and CAD software. Whether it’s solving complex problems or mentoring others, I bring creativity, precision, and a collaborative spirit to all that I do.
+    </p>
   </div>
+
+  <div class="skills">
+    <h2>Skills & Expertise</h2>
+    <ul>
+      <li>Proficient in CAD software (Fusion360, SolidWorks) and fabrication tools (3D printing, CNC machines, laser cutters).</li>
+      <li>Strong programming and analytical skills, with experience in Python, MATLAB, and statistical modeling.</li>
+      <li>Research experience in astrophysics, fiber optics, and materials science.</li>
+      <li>Leadership and mentorship through roles in academic and makerspace settings.</li>
+    </ul>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Vir Goyal. Made with love for tinkering. <a href="contact.html">Contact Me</a></p>
+  </footer>
 </body>
 </html>
