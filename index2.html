@@ -19,7 +19,6 @@
       line-height: 1.8;
     }
 
-    /* Header */
     header {
       display: flex;
       justify-content: space-between;
@@ -27,7 +26,6 @@
       padding: 20px 50px;
       background-color: #ffffff;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      position: relative;
     }
 
     header a {
@@ -43,23 +41,6 @@
       color: #0056b3;
     }
 
-    nav {
-      display: flex;
-    }
-
-    /* Hamburger Menu */
-    .menu-toggle {
-      display: none;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 15px;
-    }
-
-    /* Main Content */
     .container {
       display: flex;
       align-items: center;
@@ -113,7 +94,6 @@
       color: #0056b3;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
@@ -135,103 +115,14 @@
     footer a:hover {
       text-decoration: underline;
     }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: white;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .nav-links a {
-        padding: 10px;
-        display: block;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .container {
-        flex-direction: column;
-        padding: 50px 20px;
-        text-align: center;
-      }
-
-      .profile-image img {
-        width: 80%;
-        max-width: 250px;
-      }
-
-      .content {
-        padding-left: 0;
-      }
-
-      .content h1 {
-        font-size: 36px;
-      }
-
-      .content p {
-        font-size: 16px;
-      }
-
-      .social-icons {
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        padding: 10px;
-      }
-
-      .container {
-        padding: 30px 15px;
-      }
-
-      .content h1 {
-        font-size: 28px;
-      }
-
-      .content p {
-        font-size: 14px;
-      }
-
-      .social-icons {
-        gap: 15px;
-      }
-
-      footer {
-        padding: 10px;
-        font-size: 12px;
-      }
-    }
   </style>
-
-  <!-- Include FontAwesome for Icons -->
+  <!-- Include icons -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
     <a href="index.html" style="font-size: 18px; font-weight: bold;">Vir Goyal</a>
-    <span class="menu-toggle">&#9776;</span>
-    <nav class="nav-links">
+    <nav>
       <a href="projects.html">Projects</a>
       <a href="contact.html">Contact</a>
       <a href="resume.pdf" class="resume-btn">Resume</a>
@@ -262,12 +153,5 @@
   <footer>
     <p>&copy; 2025 Vir Goyal. Made with love for tinkering. <a href="contact.html">Contact Me</a></p>
   </footer>
-
-  <!-- JavaScript for Hamburger Menu -->
-  <script>
-    document.querySelector(".menu-toggle").addEventListener("click", function() {
-      document.querySelector(".nav-links").classList.toggle("active");
-    });
-  </script>
 </body>
 </html>
