@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WALL-E Walnut Wood Frame</title>
+  <title>DIY ESP32 MP3 Player</title>
   <style>
-    /* General Reset */
     * {
       margin: 0;
       padding: 0;
@@ -13,14 +12,12 @@
       font-family: 'Georgia', serif;
     }
 
-    /* Body Styling */
     body {
       background-color: #f9f9f9;
       color: #333;
       line-height: 1.8;
     }
 
-    /* Header Styling */
     header {
       background-color: #ffffff;
       padding: 20px 50px;
@@ -47,50 +44,102 @@
       color: #0056b3;
     }
 
-    /* Main Container */
     .container {
       padding: 50px;
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* Title Styling */
-    h1 {
-      font-size: 38px;
-      font-weight: bold;
-      color: #0056b3;
-      text-align: center;
-      margin-bottom: 30px;
+    .main-section {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 50px;
     }
 
-    .intro {
-      margin-bottom: 30px;
-      font-size: 18px;
-      color: #555;
-      text-align: justify;
-    }
-
-    /* Float Images */
-    .float-image {
-      max-width: 300px;
-      width: 100%;
-      margin: 15px 20px 15px 0; /* Add spacing around the image */
+    .main-section img {
+      width: 350px;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .first-image {
-      float: left; /* First image is floated to the left */
+    .main-section .text-content {
+      flex: 1;
     }
 
-    .second-image {
-      float: right; /* Second image is also floated to the left */
-      margin-top: 15px; /* Space between images */
+    .main-section h1 {
+      font-size: 36px;
+      color: #0056b3;
+      margin-bottom: 20px;
     }
 
-    /* Clear Floats */
-    .clearfix {
-      clear: both;
+    .main-section p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .carousel-section {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .carousel {
+      position: relative;
+      width: 350px;
+      height: 500px;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .carousel button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .carousel button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .carousel button.left {
+      left: 10px;
+    }
+
+    .carousel button.right {
+      right: 10px;
+    }
+
+    .carousel-text {
+      flex: 1;
+      font-size: 18px;
+      color: #555;
+      line-height: 1.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
     footer {
@@ -115,6 +164,30 @@
       text-decoration: underline;
     }
   </style>
+  <script>
+    let currentImageIndex = 0;
+    function showImage(index) {
+      const images = document.querySelectorAll('.carousel img');
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+      currentImageIndex = index;
+    }
+
+    function nextImage() {
+      const images = document.querySelectorAll('.carousel img');
+      showImage((currentImageIndex + 1) % images.length);
+    }
+
+    function prevImage() {
+      const images = document.querySelectorAll('.carousel img');
+      showImage((currentImageIndex - 1 + images.length) % images.length);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showImage(0);
+    });
+  </script>
 </head>
 <body>
   <header>
@@ -127,38 +200,36 @@
   </header>
 
   <div class="container">
-    <!-- Title Section -->
-    <h1>WALL-E Walnut Wood Frame</h1>
-
-    <!-- Intro Section -->
-    <div class="intro">
-      <p>
-        This is a frame I designed and built for a beautiful artwork gifted to me by Devika Bisht, inspired by the movie WALL-E. I wanted the frame to echo the movie's aesthetic by blending the organic warmth of wood with sleek, sci-fi-inspired metal elements. The interplay between earthy and futuristic themes was central to the design, reflecting the balance between nature and technology in WALL-E.
-      </p>
+    <div class="main-section">
+      <img src="assets/mp3/IMG_0011.jpeg" alt="DIY ESP32 MP3 Player">
+      <div class="text-content">
+        <h1>DIY ESP32 MP3 Player</h1>
+        <p>
+          I love listening to music, but I never have enough storage on my phone—this is especially frustrating on long flights. So, I decided to take matters into my own hands and build my very own MP3 player!
+        <br><br>
+        This ESP32-based MP3 player is compact, portable, and super functional. It features a customized ESP32 board with an OLED display and an audio expansion shield based on the UDA1334ATS DAC chip. Together, they make it possible to play high-quality MP3 and WAV files from a microSD card. The player supports both headphones and speakers, thanks to a 3.5mm audio jack.
+<br><br>
+To make the device truly portable, it operates on a 5V power supply, so you can use a power bank or any USB power adapter. All the electronics are housed in a custom-designed 3D-printed case that I modeled and assembled to give it a clean, professional look.
+<br><br>
+I designed and laser cut a compact casing out of acrylic, ensuring portability while protecting the electronics.   The artwork on the back was drawn by the talented Devika Bisht, making this project as much about art as it is about the mechatronics.
+        </p>
+        
+      </div>
     </div>
 
-    <!-- Content Section -->
-    <div class="content">
-      <img src="assets/walle/IMG_0282.jpg" alt="WALL-E Walnut Wood Frame" class="float-image first-image">
-      <p>
-        <br><br><br><br>The walnut wood for this project came from Haverford College's Arboretum, making the frame deeply personal and tied to a meaningful place. I sketched a design inspired by the natural shape of a tree trunk, with an organic, flowing opening to mirror a hole in a tree. The blend of wood and metal symbolized the connection between earth and space—a recurring theme in the film. <br><br><br><br><br>
-      </p>
-      <p>
-        I used a CNC mill to cut the walnut slab to size and carve an organic hole in the center, ensuring precision while preserving the natural feel of the design. I CAD-designed and 3D-printed a LEGO brick to anchor LEGO figurines to the frame. For mounting the glass, I opted for magnets instead of gluing it directly to the wood, as wood is a "living" material that expands and contracts with environmental changes. The magnets provide flexibility while maintaining a clean, modern look.<br><br><br>
-      </p>
-
-      <img src="assets/walle/IMG_4160.jpeg" alt="WALL-E Walnut Wood Frame Closeup" class="float-image second-image">
-      <p>
-        <br>To secure the artwork, I used magnets with sawed-off screw heads glued to the top, combining functionality with a minimalistic, industrial aesthetic. Over several days, I meticulously sanded and finished the walnut to enhance its natural dark grain and achieve a smooth, polished surface, creating a striking contrast with the metallic elements.<br><br><br>
-      </p>
+    <div class="carousel-section">
+      <div class="carousel">
+        <button class="left" onclick="prevImage()">&#8592;</button>
+        <img src="assets/mp3/IMG_0026.jpeg" alt="Carousel Image 1" class="active">
+        <img src="assets/mp3/IMG_0021.jpeg"Carousel Image 2">
+        <button class="right" onclick="nextImage()">&#8594;</button>
+      </div>
+      <img src="assets/mp3/IMG_0004.jpeg" alt="Side View" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <img src="assets/mp3/IMG_0027.jpeg" alt="Side View" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
     </div>
 
-    <!-- Clear Floats -->
-    <div class="clearfix"></div>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 Vir Goyal. Made with love for tinkering. <a href="contact.html">Contact Me</a></p>
-  </footer>
-</body>
+    <footer>
+      <p>&copy; 2025 Vir Goyal. Made with love for tinkering. <a href="contact.html">Contact Me</a></p>
+    </footer>
+  </body>
 </html>
