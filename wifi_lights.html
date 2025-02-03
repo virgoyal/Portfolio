@@ -1,1 +1,226 @@
-<!-- hi -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Lighting Control with ESP32</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0 10px;
+    }
+
+    header a:hover {
+      color: #0056b3;
+    }
+
+    .container {
+      padding: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .main-section h1 {
+      font-size: 36px;
+      color: #0056b3;
+      margin-bottom: 20px;
+    }
+
+    .main-section p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .features {
+      margin-top: 20px;
+    }
+
+    .features li {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .carousel button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .carousel button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .carousel .left {
+      left: 10px;
+    }
+
+    .carousel .right {
+      right: 10px;
+    }
+
+    .video-section {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+    }
+
+    footer p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    footer a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" style="font-size: 18px; font-weight: bold;">Vir Goyal</a>
+    <nav>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="resume.pdf" class="resume-btn">Download CV</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="main-section">
+      <h1>Smart Lighting Control with ESP32</h1>
+      <h2>Motivation</h2>
+      <p>
+        My cat chewed through the wires of my fairy lights. Instead of just taping them back together, I decided to upgrade them. I wanted a way to softly illuminate my room at night without the hassle of getting out of bed to turn them off.
+      </p>
+      <p>
+        So, I built an ESP32-based smart lighting system that lets me control the lights via a web interface, a physical switch, and an automatic timer. The system operates on its own self-hosted Wi-Fi, meaning I can control it wirelessly, even without internet access.
+      </p>
+      <div class="video-section">
+        <h2>Watch the Smart Lighting in Action</h2>
+        <iframe src="https://drive.google.com/file/d/1ULm042s2Vq78KcJM4Ir-v-fH6laDAXmI/preview" allow="autoplay"></iframe>
+      </div>
+    </div>
+      <h2>Features</h2>
+      <ul class="features">
+        <li> Wi-Fi Control – The ESP32 acts as an access point, hosting a web interface where I can turn the lights ON/OFF and set a timer.</li>
+        <li> Physical Switch Integration – A wired switch provides manual control, with debouncing to ensure stable operation.</li>
+        <li> Custom Timer – Lights turn on when a timer is set and switch off automatically when time runs out.</li>
+        <li> Relay-Controlled Power – A relay module manages the input power to the lights.</li>
+      </ul>
+
+
+    <div class="carousel">
+      <button class="left" onclick="prevImage()">&#8592;</button>
+      <img src="assets/wifi_lights/IMG_4135.jpeg" alt="Smart Lighting Control" class="active">
+      <img src="assets/wifi_lights/IMG_4139.jpeg" alt="Smart Lighting Control">
+      <button class="right" onclick="nextImage()">&#8594;</button>
+    </div>
+
+    <p>
+      This project blends hardware control, IoT development, and embedded systems to create a practical, everyday solution. Now, I can control my fairy lights effortlessly—whether through my phone, a switch, or an automatic timer—all while keeping my cat away from the wires! 🐱💡
+    </p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Vir Goyal. Made with love for tinkering. <a href="contact.html">Contact Me</a></p>
+  </footer>
+
+  <script>
+    let currentImageIndex = 0;
+    const images = document.querySelectorAll(".carousel img");
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle("active", i === index);
+      });
+    }
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      showImage(currentImageIndex);
+    }
+
+    function prevImage() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      showImage(currentImageIndex);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      showImage(0);
+    });
+  </script>
+</body>
+</html>
