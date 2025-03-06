@@ -63,11 +63,20 @@
       color: #555;
     }
 
-    /* Modified main-section to be column layout */
-    .main-section {
+    /* Modified main-section to be column layout for the first section */
+    .main-section.intro {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 50px;
+    }
+
+    /* But keep the second section as a row */
+    .main-section.idea {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
       margin-bottom: 50px;
     }
 
@@ -87,8 +96,12 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .main-section .text-content {
+    .main-section.intro .text-content {
       width: 100%;
+    }
+
+    .main-section.idea .text-content {
+      flex: 1;
     }
 
     .main-section h1 {
@@ -232,6 +245,7 @@
         padding: 30px;
       }
 
+      .main-section.idea,
       .content-section {
         flex-direction: column;
         text-align: center;
@@ -290,7 +304,8 @@
   </header>
   
   <div class="container">
-    <div class="main-section">
+    <!-- First section with column layout -->
+    <div class="main-section intro">
       <!-- Title is now at the top -->
       <h1>Acorn Fairy Houses – Wireless Inductive LEDs</h1>
       
@@ -305,7 +320,8 @@
       </div>
     </div>
     
-    <div class="main-section">
+    <!-- Second section with row layout - image on left, text on right -->
+    <div class="main-section idea">
       <img src="/assets/acornhouse/idea.png" alt="idea">
       <div class="text-content">
         <p>
