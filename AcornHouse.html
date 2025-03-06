@@ -63,27 +63,39 @@
       color: #555;
     }
 
+    /* Modified main-section to be column layout */
     .main-section {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 30px;
       margin-bottom: 50px;
     }
 
-    .main-section img {
+    /* Modified image styles for top image */
+    .main-image {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 20px 0 30px;
+    }
+
+    /* Regular image styles for other images */
+    .main-section img:not(.main-image) {
       width: 350px;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .main-section .text-content {
-      flex: 1;
+      width: 100%;
     }
 
     .main-section h1 {
       font-size: 36px;
       color: #0056b3;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     .main-section p {
@@ -220,13 +232,13 @@
         padding: 30px;
       }
 
-      .main-section, .content-section {
+      .content-section {
         flex-direction: column;
         text-align: center;
         gap: 20px;
       }
 
-      .main-section img {
+      .main-section img:not(.main-image) {
         width: 100%;
         max-width: 300px;
       }
@@ -279,9 +291,14 @@
   
   <div class="container">
     <div class="main-section">
-      <img src="assets/acornhouse/IMG_4344.jpg" alt="acornhouse">
+      <!-- Title is now at the top -->
+      <h1>Acorn Fairy Houses – Wireless Inductive LEDs</h1>
+      
+      <!-- Image comes directly below the title, with main-image class for specific styling -->
+      <img src="assets/acornhouse/IMG_4344.jpg" alt="acornhouse" class="main-image">
+      
+      <!-- Text comes after the image -->
       <div class="text-content">
-        <h1>Acorn Fairy Houses – Wireless Inductive LEDs</h1>
         <p>
           Someone once told me about a dreamland they created for their kids—a magical place where the lanterns only lit up when you were close to the ones you love. That beautiful idea stuck with me, and it became the inspiration for this project.
         </p>
@@ -313,7 +330,7 @@
     
     <h2>My Process</h2>
     <p>
-      1. I gathered all the components and experimented with different wood thicknesses to ensure the inductive power transfer was strong enough to light up the LEDs. Once I found the right balance, I carved a cavity into the underside of the wood slab to embed the induction coils.
+      1. I gathered all the electronic components and experimented with different wood thicknesses to ensure the inductive power transfer was strong enough to light up the LEDs. Once I found the right balance, I carved a cavity into the underside of the wood slab to embed the induction coils.
     </p>
     
     <div class="content-section media-left">
@@ -335,7 +352,7 @@
     <div class="content-section media-right">
       <div class="text-content">
         <p>
-          3. I carved out a cavity in the walnut slab for a resin pour to create an ocean effect. Then I finally poured the resin. This was the most nerve-wracking part. I messed up a couple of times, but after some trial and error, I got the ocean effect I wanted.
+          3. I carved out a cavity in the walnut slab for a resin pour to create the "sea". Then I finally poured the resin. This was the most nerve-wracking part. I messed up a couple of times, but after some trial and error, I got the effect I wanted.
         </p>
       </div>
       <div class="media-content">
@@ -359,7 +376,7 @@
       </div>
       <div class="text-content">
         <p>
-          4. The last step was sanding the walnut wood to a silky smooth finish and treating it with Tried & True wood finish to bring out its rich, natural grain.
+          4. The last step was sanding the walnut wood and treating it with Tried & True wood finish to bring out its rich, natural grain.
         </p>
       </div>
     </div>
