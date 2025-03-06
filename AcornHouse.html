@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acorn Fairy Houses – Wireless Inductive LEDs</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    header a:hover {
+      color: #0056b3;
+    }
+
+    .container {
+      padding: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #0056b3;
+      margin: 30px 0 20px;
+      font-size: 28px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .main-section {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .main-section img {
+      width: 350px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-section .text-content {
+      flex: 1;
+    }
+
+    .main-section h1 {
+      font-size: 36px;
+      color: #0056b3;
+      margin-bottom: 20px;
+    }
+
+    .main-section p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    /* Media and Carousel Sections with Alternating Layout */
+    .content-section {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .content-section.media-right .media-content {
+      order: 2;
+    }
+
+    .content-section.media-right .text-content {
+      order: 1;
+    }
+
+    .content-section.media-left .media-content {
+      order: 1;
+    }
+
+    .content-section.media-left .text-content {
+      order: 2;
+    }
+
+    .text-content {
+      flex: 1;
+      min-width: 300px;
+      font-size: 18px;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .media-content {
+      flex: 1;
+      min-width: 350px;
+      max-width: 500px;
+    }
+
+    /* Carousel Styles */
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .carousel button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      z-index: 10;
+    }
+
+    .carousel button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .carousel button.left {
+      left: 10px;
+    }
+
+    .carousel button.right {
+      right: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+    }
+
+    footer p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    footer a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .container {
+        padding: 30px;
+      }
+
+      .main-section, .content-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .main-section img {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .content-section.media-right .media-content,
+      .content-section.media-right .text-content,
+      .content-section.media-left .media-content,
+      .content-section.media-left .text-content {
+        order: unset;
+      }
+      
+      .text-content, .media-content {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .main-section h1 {
+        font-size: 28px;
+      }
+
+      .main-section p, .text-content p {
+        font-size: 16px;
+      }
+
+      footer {
+        padding: 10px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" style="font-size: 18px; font-weight: bold;">Vir Goyal</a>
+    <nav>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="resume.pdf" class="resume-btn">Resume</a>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <div class="main-section">
+      <img src="assets/acornhouse/IMG_4344.jpg" alt="acornhousex">
+      <div class="text-content">
+        <h1>Acorn Fairy Houses – Wireless Inductive LEDs</h1>
+        <p>
+          Someone once told me about a dreamland they created for their kids—a magical place where the lanterns only lit up when you were close to the ones you love. That beautiful idea stuck with me, and it became the inspiration for this project.
+        </p>
+      </div>
+    </div>
+    
+    <div class="main-section">
+      <img src="/Users/virgoyal/Desktop/assets/acornhouse/IMG_4361.jpg" alt="idea">
+      <div class="text-content">
+        <p>
+          I started by designing small fairy houses, using acorns as roofs to give them a whimsical, woodland feel. To ground them in nature, I picked out a beautiful slab of walnut wood from Haverford College's arboretum, with the live edge bark still intact. I wanted this to feel like a tiny settlement, so I planned to add other elements like maybe a miniature campfire/ benches/ lampposts, and even a small body of water made from a resin pour.
+        </p>
+      </div>
+    </div>
+    
+    <div class="content-section media-right">
+      <div class="text-content">
+        <p>
+          But the idea that kept pulling me back was the glowing lanterns—lights that would only shine when someone you loved was nearby. After some research, I decided to incorporate wireless inductive LEDs, embedding induction coils in the wooden base and placing LEDs inside the huts. This way, the houses would emit a soft, warm glow when set down on the slab, bringing the dreamland to life.
+        </p>
+      </div>
+      <div class="media-content">
+        <iframe 
+          src="https://drive.google.com/file/d/18bi7cQbBR-mTvZVE8qsRcXnH4UNrp1_3/preview" 
+          allow="autoplay">
+        </iframe>
+      </div>
+    </div>
+    
+    <h2>My Process</h2>
+    <p>
+      1. I gathered all the components and experimented with different wood thicknesses to ensure the inductive power transfer was strong enough to light up the LEDs. Once I found the right balance, I carved a cavity into the underside of the wood slab to embed the induction coils.
+    </p>
+    
+    <div class="content-section media-left">
+      <div class="media-content">
+        <div class="carousel" id="carousel1">
+          <button class="left" onclick="changeImage('carousel1', -1)">&#8592;</button>
+          <img src="assets/acornhouse/IMG_4273.jpg" alt="huts" class="active">
+          <img src="assets/acornhouse/IMG_4274.jpg" alt="dark huts">
+          <button class="right" onclick="changeImage('carousel1', 1)">&#8594;</button>
+        </div>
+      </div>
+      <div class="text-content">
+        <p>
+          2. I sculpted the tiny houses out of clay and plaster, carefully embedding LEDs inside them. I also made a tiny campfire out of twigs, which ended up being one of my favorite details.
+        </p>
+      </div>
+    </div>
+
+    <div class="content-section media-right">
+      <div class="text-content">
+        <p>
+          3. I carved out a cavity in the walnut slab for a resin pour to create an ocean effect. Then I finally poured the resin. This was the most nerve-wracking part. I messed up a couple of times, but after some trial and error, I got the ocean effect I wanted.
+        </p>
+      </div>
+      <div class="media-content">
+        <div class="carousel" id="carousel2">
+          <button class="left" onclick="changeImage('carousel2', -1)">&#8592;</button>
+          <img src="assets/acornhouse/IMG_4359.jpg" alt="resin" class="active">
+          <img src="assets/acornhouse/IMG_4349.jpg" alt="resin dark">
+          <button class="right" onclick="changeImage('carousel2', 1)">&#8594;</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="content-section media-left">
+      <div class="media-content">
+        <div class="carousel" id="carousel3">
+          <button class="left" onclick="changeImage('carousel3', -1)">&#8592;</button>
+          <img src="assets/acornhouse/IMG_4331.jpg" alt="Main Lamp Image" class="active">
+          <img src="assets/acornhouse/IMG_4357.jpg" alt="Step 1">
+          <button class="right" onclick="changeImage('carousel3', 1)">&#8594;</button>
+        </div>
+      </div>
+      <div class="text-content">
+        <p>
+          4. The last step was sanding the walnut wood to a silky smooth finish and treating it with Tried & True wood finish to bring out its rich, natural grain.
+        </p>
+      </div>
+    </div>
+    
+    <h2>Reflections and the Result</h2>
+    <div class="content-section media-right">
+      <div class="text-content">
+        <p>
+          This project was more than just a fun build—it was about capturing a feeling. The idea that light, warmth, and magic come alive in the presence of loved ones.
+        </p>
+        <p>
+          Here are some images of the finished project -->
+        </p>
+      </div>
+      <div class="media-content">
+        <div class="carousel" id="carousel4">
+          <button class="left" onclick="changeImage('carousel4', -1)">&#8592;</button>
+          <img src="assets/acornhouse/IMG_4343.jpg" alt="Main Image" class="active">
+          <img src="assets/acornhouse/IMG_4337.jpg" alt="Main Image">
+          <button class="right" onclick="changeImage('carousel4', 1)">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Vir Goyal <a href="contact.html">Contact Me</a></p>
+  </footer>
+
+  <script>
+    // Initialize carousels
+    document.addEventListener("DOMContentLoaded", () => {
+      // Each carousel has its first image active by default (set in HTML)
+    });
+
+    // Individual carousel control function
+    function changeImage(carouselId, direction) {
+      const carousel = document.getElementById(carouselId);
+      const images = carousel.querySelectorAll("img");
+      
+      // Find current active image index
+      let currentIndex = 0;
+      for (let i = 0; i < images.length; i++) {
+        if (images[i].classList.contains("active")) {
+          currentIndex = i;
+          break;
+        }
+      }
+      
+      // Calculate new index
+      let newIndex = (currentIndex + direction + images.length) % images.length;
+      
+      // Update active class
+      images[currentIndex].classList.remove("active");
+      images[newIndex].classList.add("active");
+    }
+  </script>
+</body>
+</html>
